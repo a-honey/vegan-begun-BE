@@ -14,7 +14,7 @@ export class ReviewService {
     return this.reviewRepository.find();
   }
 
-  findOne(id: number): Promise<Review> {
+  findOne(id: number): Promise<Review | null> {
     return this.reviewRepository.findOne({ where: { id } });
   }
 
@@ -22,7 +22,7 @@ export class ReviewService {
     return this.reviewRepository.save(review);
   }
 
-  async update(id: number, review: Partial<Review>): Promise<Review> {
+  async update(id: number, review: Partial<Review>): Promise<Review | null> {
     await this.reviewRepository.update(id, review);
     return this.findOne(id);
   }

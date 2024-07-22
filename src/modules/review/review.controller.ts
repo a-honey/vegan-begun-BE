@@ -13,7 +13,7 @@ export class ReviewController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Review> {
+  findOne(@Param('id') id: string): Promise<Review | null> {
     return this.reviewService.findOne(+id);
   }
 
@@ -21,7 +21,7 @@ export class ReviewController {
   update(
     @Param('id') id: string,
     @Body() review: Partial<Review>,
-  ): Promise<Review> {
+  ): Promise<Review | null> {
     return this.reviewService.update(+id, review);
   }
 
